@@ -1,3 +1,11 @@
+-- ID del juego "Escaleras Obby Difícil"
+local TARGET_PLACE_ID = 12101921792
+
+if game.PlaceId ~= TARGET_PLACE_ID then
+    warn("Este script solo funciona en Escaleras Obby Difícil.")
+    return
+end
+
 -- Cargar WindUI
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 
@@ -5,7 +13,7 @@ local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/rel
 local Window = WindUI:CreateWindow({
     Title = "Auto-Farm Coins",
     Icon = "coins",
-    Author = "??",
+    Author = "Eduard",
     Folder = "EduardAutoFarm",
     Size = UDim2.fromOffset(480, 340),
     Transparent = true,
@@ -44,8 +52,8 @@ local function getOrderedCoins(rootPart)
 
                 if matchesFilter then
                     local distance = (rootPart.Position - primaryPart.Position).Magnitude
-                    -- Ignorar objetos demasiado lejanos (ej. más de 500 studs) o al propio jugador
-                    if distance < 500 then
+                    -- Límite ampliado a 2000 studs para cubrir la altura de las escaleras
+                    if distance < 2000 then
                         table.insert(coins, {part = primaryPart, dist = distance})
                     end
                 end
