@@ -138,3 +138,40 @@ MainTab:Input({
         searchFilter = text or ""
     end
 })
+
+-- NUEVO BOTÓN: Teletransporte rápido hacia arriba / Fogata o checkpoints más altos
+MainTab:Button({
+    Title = "Subir al Checkpoint / Fogata más alta",
+    Desc = "Te teletransporta al objeto más alto del mapa (faro o fogata)",
+    Callback = function()
+        pcall(function()
+            local player = game.Players.LocalPlayer
+            local character = player.Character
+            local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+
+            if rootPart then
+                local highestPart = nil
+                local maxHeight = -math.huge
+
+                -- Buscamos la parte más alta en el mapa (como el faro o checkpoints superiores)
+                for _, obj in ipairs(workspace:GetDescendants()) do
+                    if obj:IsA("BasePart") then
+                        if obj.Position.Y > maxHeight then
+                            maxHeight = obj.Position.Y
+                            highestPart = obj
+                        end
+                    end
+                end
+
+                if highestPart then
+                    rootPart.CFrame = highestPart.CFrame + Vector3.new(0, 5, 0)
+                    WindUI:Notify({
+                        Title = "Teletransporte",
+                        Content = "¡Movido a la zona más alta!",
+                        Duration = 3
+                    })
+                end
+            end
+        end)
+    end
+})
