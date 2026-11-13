@@ -1,1 +1,168 @@
-local _1,_2,_3,_4,_5,_6=(function(v1,v2,v3)local v4=string.char;local v5=string.byte;local v6=table.concat;local v7=math.ldexp;local v8=getfenv or function()return _ENV;end;local v9=setmetatable;local v10=tonumber;local v11=unpack or table.unpack;local v12=tostring;local v13=select;return function(...)local v14={...};local v15=1;local v16={};local v17={};local v18={};local v19=1921792;local v20=game;local v21=v20.PlaceId;if v21~=v19 then warn(("\xc3\x89ste script solo funciona en Escaleras Obby Dif\xc3\xadcil."))do return end;end;local v22="https://github.com/Footagesus/WindUI/releases/latest/download/main.lua";local v23=loadstring;local v24=game.HttpGet;local v25=v23(v24(v20,v22))();local v26=v25.CreateWindow;local v27=v26(v25,{Title="\x41\x75\x74\x6f\x2d\x46\x61\x72\x6d\x20\x43\x6f\x69\x6e\x73",Icon="\x63\x6f\x69\x6e\x73",Author="\x3f\x3f",Folder="\x45\x75\x61\x72\x64\x41\x75\x74\x6f\x46\x61\x72\x6d",Size=UDim2.fromOffset(480,340),Transparent=true,Theme="\x44\x61\x72\x6b",SideBarWidth=150});local v28=v27.Tab;local v29=v28(v27,{Title="\x50\x72\x69\x6e\x63\x69\x70\x61\x6c",Icon="\x70\x6c\x61\x79"});local v30=false;local v31=0.1;local v32="";local function v33(v34)local v35={};local v36=v32:lower();for v37,v38 in ipairs(workspace:GetDescendants())do if v38:IsA("\x42\x61\x73\x65\x50\x61\x72\x74")or v38:IsA("\x4d\x6f\x64\x65\x6c")then local v39=v38:IsA("\x4d\x6f\x64\x65\x6c")and v38.PrimaryPart or v38;if v39 then local v40=v38.Name:lower();local v41=v38.Parent and v38.Parent.Name:lower()or"";local v42=v36==""or v40:find(v36)or v41:find(v36)or v40:find("\x63\x6f\x69\x6e")or v40:find("\x67\x6f\x6c\x64")or v40:find("\x63\x61\x73\x68")or v40:find("\x6d\x6f\x6e\x65\x79");if v42 then local v43=(v34.Position-v39.Position).Magnitude;if v43<2000 then table.insert(v35,{part=v39,dist=v43});end;end;end;end;end;table.sort(v35,function(v44,v45)return v44.dist<v45.dist;end);return v35;end;task.spawn(function()while true do if v30 then pcall(function()local v46=game.Players.LocalPlayer;local v47=v46.Character;local v48=v47 and v47:FindFirstChild("\x48\x75\x6d\x61\x6e\x6f\x69\x64\x52\x6f\x6f\x74\x50\x61\x72\x74");if v48 then local v49=v33(v48);for v50,v51 in ipairs(v49)do if not v30 then break;end;local v52=v51.part;if v52 and v52.Parent then v48.CFrame=v52.CFrame+Vector3.new(0,2,0);if firetouchinterest then firetouchinterest(v48,v52,0);firetouchinterest(v48,v52,1);end;task.wait(v31);end;end;end;end);end;task.wait(0.1);end;end);v29:Toggle({Title="\x41\x63\x74\x69\x76\x61\x72\x20\x41\x75\x74\x6f\x2d\x46\x61\x72\x6d",Desc="\x54\x65\x6c\x65\x74\x72\x61\x6e\x73\x70\x6f\x72\x74\x61\x20\x61\x6c\x20\x70\x65\x72\x73\x6f\x6e\x61\x6a\x65\x20\x68\x61\x63\x69\x61\x20\x6c\x61\x73\x20\x6d\x6f\x6e\x65\x64\x61\x73",Value=false,Callback=function(v53)v30=v53;end});v29:Slider({Title="\x56\x65\x6c\x6f\x63\x69\x64\x61\x64\x20\x64\x65\x20\x52\x65\x63\x6f\x6c\x65\x63\x63\x69\xef\xbf\xbd\x6e",Desc="\x54\x69\x65\x6d\x70\x6f\x20\x64\x65\x20\x65\x73\x70\x65\x72\x61\x20\x65\x6e\x74\x72\x65\x20\x63\x61\x64\x61\x20\x74\x65\x6c\x65\x74\x72\x61\x6e\x73\x70\x6f\x72\x74\x65",Step=0.02,Value={Min=0.05,Max=1,Default=0.1},Callback=function(v54)v31=v54;end});v29:Input({Title="\x46\x69\x6c\x74\x72\x6f\x20\x64\x65\x20\x4e\x6f\x6d\x62\x72\x65\x20\x28\x4f\x70\x63\x69\x6f\x6e\x61\x6c\x29",Desc="\x44\xc3\xa9\x6a\x6c\x6f\x20\x76\x61\x63\xc3\xad\x6f\x20\x6f\x20\x65\x63\x72\x69\x62\x65\x20\x70\x61\x72\x74\x65\x20\x64\x65\x6c\x20\x6e\x6f\x6d\x62\x72\x65\x20\x64\x65\x20\x6c\x61\x20\x6d\x6f\x6e\x65\x64\x61",Value="",Placeholder="\x45\x6a\x3a\x20\x63\x6f\x69\x6e\x2c\x20\x67\x6f\x6c\x64\x2e\x2e\x2e",Callback=function(v55)v32=v55 or"";end});v29:Button({Title="\x53\x75\x62\x69\x72\x20\x61\x6c\x20\x43\x68\x65\x63\x6b\x70\x6f\x69\x6e\x74\x20\x2f\x20\x46\x6f\x67\x61\x74\x61\x20\x6d\xc3\xa1\x7s\x20\x61\x6c\x74\x61",Desc="\x54\x65\x6c\x65\x74\x72\x61\x6e\x73\x70\x6f\x72\x74\x61\x20\x61\x6c\x20\x6f\x62\x6a\x65\x74\x6f\x20\x6d\xc3\xa1\x73\x20\x61\x6c\x74\x6f\x20\x64\x65\x6c\x20\x6d\x61\x70\x6f\x20\x28\x66\x61\x72\x6f\x20\x6f\x20\x66\x6f\x67\x61\x74\x61\x29",Callback=function()pcall(function()local v56=game.Players.LocalPlayer;local v57=v56.Character;local v58=v57 and v57:FindFirstChild("\x48\x75\x6d\x61\x6e\x6f\x69\x64\x52\x6f\x6f\x74\x50\x61\x72\x74");if v58 then local v59=nil;local v60=-math.huge;for v61,v62 in ipairs(workspace:GetDescendants())do if v62:IsA("\x42\x61\x73\x65\x50\x61\x72\x74")then if v62.Position.Y>v60 then v60=v62.Position.Y;v59=v62;end;end;end;if v59 then v58.CFrame=v59.CFrame+Vector3.new(0,5,0);v25:Notify({Title="\x54\x65\x6c\x65\x74\x72\x61\x6e\x73\x70\x6f\x78\x74\x65",Content="\xc2\xa1\x4d\x6f\x76\x69\x64\x6f\x20\x61\x20\x6c\x61\x20\x7a\x6f\x6e\x61\x20\x6d\xc3\xa1\x73\x20\x61\x6c\x74\x61\x21",Duration=3});end;end;end);end});end)())
+-- ID del juego "Escaleras Obby Difícil"
+local TARGET_PLACE_ID = 12101921792
+
+if game.PlaceId ~= TARGET_PLACE_ID then
+    warn("Este script solo funciona en Escaleras Obby Difícil.")
+    return
+end
+
+-- Cargar WindUI
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+
+-- Crear ventana principal
+local Window = WindUI:CreateWindow({
+    Title = "Auto-Farm Coins",
+    Icon = "coins",
+    Author = "Eduard",
+    Folder = "EduardAutoFarm",
+    Size = UDim2.fromOffset(480, 340),
+    Transparent = true,
+    Theme = "Dark",
+    SideBarWidth = 150,
+})
+
+-- Crear pestaña
+local MainTab = Window:Tab({
+    Title = "Principal",
+    Icon = "play",
+})
+
+-- Variables de control
+local autoFarmActive = false
+local farmSpeed = 0.1
+local searchFilter = ""
+
+-- Función para encontrar monedas
+local function getOrderedCoins(rootPart)
+    local coins = {}
+    local filterLower = searchFilter:lower()
+
+    for _, obj in ipairs(workspace:GetDescendants()) do
+        if obj:IsA("BasePart") or obj:IsA("Model") then
+            local primaryPart = obj:IsA("Model") and obj.PrimaryPart or obj
+            
+            if primaryPart then
+                local nameLower = obj.Name:lower()
+                local parentName = obj.Parent and obj.Parent.Name:lower() or ""
+
+                local matchesFilter = (filterLower == "") or nameLower:find(filterLower) or parentName:find(filterLower) or nameLower:find("coin") or nameLower:find("gold") or nameLower:find("cash") or nameLower:find("money")
+
+                if matchesFilter then
+                    local distance = (rootPart.Position - primaryPart.Position).Magnitude
+                    if distance < 2000 then
+                        table.insert(coins, {part = primaryPart, dist = distance})
+                    end
+                end
+            end
+        end
+    end
+
+    table.sort(coins, function(a, b)
+        return a.dist < b.dist
+    end)
+
+    return coins
+end
+
+-- Bucle principal del Auto-Farm
+task.spawn(function()
+    while true do
+        if autoFarmActive then
+            pcall(function()
+                local player = game.Players.LocalPlayer
+                local character = player.Character
+                local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+
+                if rootPart then
+                    local orderedCoins = getOrderedCoins(rootPart)
+
+                    for _, coinData in ipairs(orderedCoins) do
+                        if not autoFarmActive then break end
+                        local coinPart = coinData.part
+
+                        if coinPart and coinPart.Parent then
+                            rootPart.CFrame = coinPart.CFrame + Vector3.new(0, 2, 0)
+                            
+                            if firetouchinterest then
+                                firetouchinterest(rootPart, coinPart, 0)
+                                firetouchinterest(rootPart, coinPart, 1)
+                            end
+                            
+                            task.wait(farmSpeed)
+                        end
+                    end
+                end
+            end)
+        end
+        task.wait(0.1)
+    end
+end)
+
+-- Controles en WindUI
+MainTab:Toggle({
+    Title = "Activar Auto-Farm",
+    Desc = "Teletransporta al personaje hacia las monedas",
+    Value = false,
+    Callback = function(state)
+        autoFarmActive = state
+    end
+})
+
+MainTab:Slider({
+    Title = "Velocidad de Recolección",
+    Desc = "Tiempo de espera entre cada teletransporte",
+    Step = 0.02,
+    Value = {
+        Min = 0.05,
+        Max = 1,
+        Default = 0.1,
+    },
+    Callback = function(value)
+        farmSpeed = value
+    end
+})
+
+MainTab:Input({
+    Title = "Filtro de Nombre (Opcional)",
+    Desc = "Déjalo vacío o escribe parte del nombre de la moneda",
+    Value = "",
+    Placeholder = "Ej: coin, gold...",
+    Callback = function(text)
+        searchFilter = text or ""
+    end
+})
+
+MainTab:Button({
+    Title = "Subir al Checkpoint / Fogata más alta",
+    Desc = "Te teletransporta al objeto más alto del mapa (faro o fogata)",
+    Callback = function()
+        pcall(function()
+            local player = game.Players.LocalPlayer
+            local character = player.Character
+            local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+
+            if rootPart then
+                local highestPart = nil
+                local maxHeight = -math.huge
+
+                for _, obj in ipairs(workspace:GetDescendants()) do
+                    if obj:IsA("BasePart") then
+                        if obj.Position.Y > maxHeight then
+                            maxHeight = obj.Position.Y
+                            highestPart = obj
+                        end
+                    end
+                end
+
+                if highestPart then
+                    rootPart.CFrame = highestPart.CFrame + Vector3.new(0, 5, 0)
+                    WindUI:Notify({
+                        Title = "Teletransporte",
+                        Content = "¡Movido a la zona más alta!",
+                        Duration = 3
+                    })
+                end
+            end
+        end)
+    end
+})
